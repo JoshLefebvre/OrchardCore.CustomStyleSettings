@@ -37,9 +37,10 @@ namespace OrchardCore.CustomStyleSettings.Services
         {
             CustomStyleSettings settings;
 
-            if (!_memoryCache.TryGetValue(CacheKey, out settings))
-            {
-                var session = GetSession();
+            //TODO: Create part handler to update cache
+            // if (!_memoryCache.TryGetValue(CacheKey, out settings))
+            // {
+            //     var session = GetSession();
 
                 settings = new CustomStyleSettings()
                 {
@@ -52,7 +53,7 @@ namespace OrchardCore.CustomStyleSettings.Services
                     _memoryCache.Set(CacheKey, settings);
                     _signal.SignalToken(CacheKey);
                 }
-            }
+            // }
 
             return settings;
         }

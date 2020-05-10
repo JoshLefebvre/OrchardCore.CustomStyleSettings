@@ -1,10 +1,11 @@
+using OrchardCore.ContentManagement;
 using OrchardCore.Media.Fields;
 
 namespace OrchardCore.CustomStyleSettings
 {
     public class CustomStyleSettings
     {
-        public MediaField SiteLogo { get; set; }
-        public MediaField SiteFavicon { get; set; }
+        public string SiteLogo { get; set; }
+        public string SiteFavicon { get; set; }
     }
 }

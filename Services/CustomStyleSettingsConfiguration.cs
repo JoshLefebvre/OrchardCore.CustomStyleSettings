@@ -31,16 +31,21 @@ namespace OrchardCore.CustomStyleSettings.Services
 
             if (siteSettings.Properties["CustomStyleSettings"] != null)
             {
+                //Map SiteSettings to CustomStyleSettingsPart
                 var CustomStyleSettingsJToken = siteSettings.Properties["CustomStyleSettings"]["CustomStyleSettingsPart"];
-                var CustomStyleSettings = CustomStyleSettingsJToken.ToObject<CustomStyleSettings>();
+                var customStyleSettingsPart = CustomStyleSettingsJToken.ToObject<CustomStyleSettingsPart>();
+
 
                 //Add public url to media fields
-                CustomStyleSettings.SiteLogo.Paths[0] = _mediaFileStore.MapPathToPublicUrl(CustomStyleSettings.SiteLogo.Paths[0]);
-                CustomStyleSettings.SiteFavicon.Paths[0] = _mediaFileStore.MapPathToPublicUrl(CustomStyleSettings.SiteFavicon.Paths[0]);
+                if(customStyleSettingsPart.SiteLogo.Paths.Length>0)
+                {
+                    options.SiteLogo  = _mediaFileStore.MapPathToPublicUrl(customStyleSettingsPart.SiteLogo.Paths[0]);
+                }
+                if(customStyleSettingsPart.SiteFavicon.Paths.Length>0)
+                {
+                     options.SiteFavicon = _mediaFileStore.MapPathToPublicUrl(customStyleSettingsPart.SiteFavicon.Paths[0]);
+                }
 
-
-                options.SiteLogo = CustomStyleSettings.SiteLogo;
-                options.SiteFavicon = CustomStyleSettings.SiteFavicon;
             }
         }
     }

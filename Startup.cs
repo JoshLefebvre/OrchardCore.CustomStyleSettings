@@ -4,13 +4,13 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using OrchardCore.ContentManagement;
+using OrchardCore.CustomStyleSettings.Handlers;
 using OrchardCore.CustomStyleSettings.Services;
 using OrchardCore.Data.Migration;
-using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.Modules;
 using OrchardCore.Navigation;
 using OrchardCore.Security.Permissions;
-using OrchardCore.Settings;
 
 namespace OrchardCore.CustomStyleSettings
 {
@@ -32,6 +32,10 @@ namespace OrchardCore.CustomStyleSettings
             //Custom Settings
             services.AddTransient<IConfigureOptions<CustomStyleSettings>, CustomStyleSettingsConfiguration>();
             services.AddTransient<ICustomStyleSettingsService, CustomStyleSettingsService>();
+
+            //Content Parts
+            services.AddContentPart<CustomStyleSettingsPart>()
+                .AddHandler<CustomStyleSettingsPartHandler>();
         }
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)

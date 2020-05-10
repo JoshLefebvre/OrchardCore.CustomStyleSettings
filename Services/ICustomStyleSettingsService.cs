@@ -1,4 +1,4 @@
-namespace OrchardCore.CustomStyleSettings
+namespace OrchardCore.CustomStyleSettings.Services
 {
     public interface ICustomStyleSettingsService
     {
