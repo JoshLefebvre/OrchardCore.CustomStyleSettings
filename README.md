@@ -3,7 +3,7 @@ A module for adding custom styles to your tenant. Below is a list of custom sett
 - Site Logo
 - Site Favicon
 
-- This project is still in early stages and not ready for consumption.
+This project is still in early stages and not ready for consumption.
 
 
 
@@ -12,6 +12,5 @@ A module for adding custom styles to your tenant. Below is a list of custom sett
 2. Clone the module under `[your Orchard Core clone's root]/src/OrchardCore.Modules`.
 3. Add the existing project to the solution under `src/OrchardCore.Modules` in the solution explorer if you're using Visual Studio.
 4. Add a reference to the module from the `OrchardCore.Cms.Web` project.
-5. OrchardCore.StripePayment has a strong dependency on the OrchardCore.Tenant billing project found here: https://github.com/JoshLefebvre/OrchardCore.TenantBilling. You will need to repeat steps 2,3 and 4 for this project. 
 5. Build, run.
 6. From the admin, enable the module's only feature.
