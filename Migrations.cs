@@ -23,6 +23,7 @@ namespace OrchardCore.CustomStyleSettings
             );
 
             _contentDefinitionManager.AlterTypeDefinition("CustomStyleSettings", builder => builder
+                .Securable()
                 .WithPart("CustomStyleSettingsPart", part => part.WithPosition("1"))
                 .Stereotype("CustomSettings")
             );

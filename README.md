@@ -5,7 +5,43 @@ A module for adding custom styles to your tenant. Below is a list of custom sett
 
 This project is still in early stages and not ready for consumption.
 
+# Using Custom Style Settings in your Theme
+You can inject the style setting into any view such as your theme layout.cshtml as follows:
+```
+@using OrchardCore.CustomStyleSettings.Services
+@inject OrchardCore.CustomStyleSettings.Services.ICustomStyleSettingsService CustomStyleSettingsService
+@{
+    ar customStyleSettings = CustomStyleSettingsService.GetCustomStyleSettings();
+}
+```
 
+You can now use your custom style settings to set your site favicon in your layout file as follows:
+```
+@if(@customStyleSettings.SiteFavicon==null)
+{
+    <link type="image/x-icon" rel="shortcut icon" href="~/TheAdmin/favicon.ico" />
+}
+else
+{
+    <link type="image/x-icon" rel="shortcut icon" href="@customStyleSettings.SiteFavicon" />
+}
+```
+
+You can now use your custom style settings to set your site logo in your header menu as follows:
+```
+@if(@customStyleSettings.SiteLogo==null)
+{
+    <a class="ta-navbar-brand" href="@Url.Content("~/")">
+        <span>@Site.SiteName</span>
+    </a>
+}
+else
+{
+    <a class="navbar-brand insitution-logo" href="@Url.Content("~/")">
+        <img src="@customStyleSettings.SiteLogo" class="navbar-brand-img" alt="...">
+    </a>   
+}
+```
 
 ## Setting up your dev environment
 1. **Prerequisites:** Make sure you have an up-to-date clone of [the Orchard Core repository](https://github.com/OrchardCMS/OrchardCore) on the `dev` branch. Please consult [the Orchard Core documentation](https://orchardcore.readthedocs.io/en/latest/) and make sure you have a working Orchard before you proceed. You'll also, of course, need all of Orchard Core's prerequisites for development (.NET Core, a code editor, etc.). The following steps assume some basic understanding of Orchard Core.

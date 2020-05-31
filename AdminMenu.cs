@@ -27,7 +27,7 @@ namespace OrchardCore.CustomStyleSettings
                 builder.Add(T["Site Settings"], "20", settings => settings
                         .AddClass("stylesettings").Id("stylesettings")
                         .Add(T["Styling Options"], "1", client => client
-                            .Action("Index", "Admin", new { area = "OrchardCore.Settings", groupId = "CustomStyleSettings" })
+                            .Action("Index", "Admin", new { area = "OrchardCore.CustomStyleSettings", groupId = "CustomStyleSettings"})
                             .Permission(Permissions.ManageCustomStyleSettings)
                             .LocalNav()
                         )
