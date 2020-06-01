@@ -8,11 +8,13 @@ using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Notify;
 using OrchardCore.Settings;
 using OrchardCore.Settings.ViewModels;
+using OrchardCore.CustomStyleSettings.Services;
 
 namespace OrchardCore.CustomStyleSettings.Controllers
 {
     public class AdminController : Controller
     {
+        private readonly ICustomStyleSettingsService _customStyleSettingsService;
         private readonly IDisplayManager<ISite> _siteSettingsDisplayManager;
         private readonly ISiteService _siteService;
         private readonly INotifier _notifier;
@@ -26,8 +28,11 @@ namespace OrchardCore.CustomStyleSettings.Controllers
             IAuthorizationService authorizationService,
             INotifier notifier,
             IHtmlLocalizer<AdminController> h,
-            IUpdateModelAccessor updateModelAccessor)
+            IUpdateModelAccessor updateModelAccessor,
+            ICustomStyleSettingsService customStyleSettingsService
+            )
         {
+            _customStyleSettingsService = customStyleSettingsService;
             _siteSettingsDisplayManager = siteSettingsDisplayManager;
             _siteService = siteService;
             _notifier = notifier;
@@ -73,7 +78,7 @@ namespace OrchardCore.CustomStyleSettings.Controllers
 
             if (ModelState.IsValid)
             {
-                await _siteService.UpdateSiteSettingsAsync(site);
+                await _customStyleSettingsService.UpdateCustomStyleSiteSettingsAsync(site);
 
                 _notifier.Success(H["Site settings updated successfully."]);
 

@@ -5,18 +5,18 @@ A module for adding custom styles to your tenant. Below is a list of custom sett
 
 This project is still in early stages and not ready for consumption.
 
-# Using Custom Style Settings in your Theme
+## Using Custom Style Settings in your Theme
 You can inject the style setting into any view such as your theme layout.cshtml as follows:
-```
+```csharp
 @using OrchardCore.CustomStyleSettings.Services
-@inject OrchardCore.CustomStyleSettings.Services.ICustomStyleSettingsService CustomStyleSettingsService
+@inject ICustomStyleSettingsService CustomStyleSettingsService
 @{
-    ar customStyleSettings = CustomStyleSettingsService.GetCustomStyleSettings();
+    var customStyleSettings = CustomStyleSettingsService.GetCustomStyleSettings();
 }
 ```
 
 You can now use your custom style settings to set your site favicon in your layout file as follows:
-```
+```csharp
 @if(@customStyleSettings.SiteFavicon==null)
 {
     <link type="image/x-icon" rel="shortcut icon" href="~/TheAdmin/favicon.ico" />
@@ -28,7 +28,7 @@ else
 ```
 
 You can now use your custom style settings to set your site logo in your header menu as follows:
-```
+```csharp
 @if(@customStyleSettings.SiteLogo==null)
 {
     <a class="ta-navbar-brand" href="@Url.Content("~/")">
