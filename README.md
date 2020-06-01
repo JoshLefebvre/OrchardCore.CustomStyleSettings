@@ -29,18 +29,16 @@ else
 
 You can now use your custom style settings to set your site logo in your header menu as follows:
 ```csharp
-@if(@customStyleSettings.SiteLogo==null)
-{
-    <a class="ta-navbar-brand" href="@Url.Content("~/")">
+<a class="ta-navbar-brand" href="@Url.Content("~/")">
+    @if(@customStyleSettings.SiteLogo==null)
+    {
         <span>@Site.SiteName</span>
-    </a>
-}
-else
-{
-    <a class="navbar-brand insitution-logo" href="@Url.Content("~/")">
+    }
+    else
+    {
         <img src="@customStyleSettings.SiteLogo" class="navbar-brand-img" alt="...">
-    </a>   
-}
+    }
+</a>
 ```
 
 ## Setting up your dev environment
