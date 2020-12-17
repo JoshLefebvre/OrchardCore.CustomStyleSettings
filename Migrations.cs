@@ -16,7 +16,7 @@ namespace OrchardCore.CustomStyleSettings
 
         public int Create()
         {
-            /***************************************Create LefeWareLearningSettings ContentItem*********************************************/
+            /***************************************Create SiteSettings ContentItem*********************************************/
             _contentDefinitionManager.AlterPartDefinition("CustomStyleSettingsPart", builder => builder
                 .WithField("SiteLogo", f => f.OfType("MediaField").WithDisplayName("Site Logo").WithSettings(new MediaFieldSettings(){Multiple = false}))
                 .WithField("SiteFavicon", f => f.OfType("MediaField").WithDisplayName("Site Favicon").WithSettings(new MediaFieldSettings(){Multiple = false}))
