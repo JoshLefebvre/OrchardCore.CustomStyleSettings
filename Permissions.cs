@@ -7,7 +7,7 @@ namespace OrchardCore.CustomStyleSettings
 {
     public class Permissions : IPermissionProvider
     {
-        public static readonly Permission ManageCustomStyleSettings = new Permission("ManageCustomStyleSettings");
+        public static readonly Permission ManageCustomStyleSettings = new Permission("ManageCustomStyleSettings", "Manage Custom Styles");
 
         public Task<IEnumerable<Permission>> GetPermissionsAsync()
         {
